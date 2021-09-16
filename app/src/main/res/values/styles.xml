@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CommonTitle">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">normal</item>
+    </style>
+
+    <style name="text_style_1">
+        <item name="android:layout_marginStart">@dimen/text_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/text_margin_top</item>
+        <item name="android:textColor">@color/text_3</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_20_666666">
+        <item name="android:textColor">@color/text_6</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_18_666666">
+        <item name="android:textColor">@color/text_6</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="text_14_666666">
+        <item name="android:textColor">@color/text_6</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+</resources>
