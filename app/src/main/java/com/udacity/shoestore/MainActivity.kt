@@ -6,10 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.udacity.shoestore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,17 +22,20 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-//        toolbar = findViewById(R.id.toolbar)
-//        setSupportActionBar(toolbar)
-//        NavigationUI.setupWithNavController(
-//            toolbar,
-//            navController,
-//            appBarConfiguration
-//        )
+        appBarConfiguration = AppBarConfiguration(
+            topLevelDestinationIds = setOf(R.id.shoeListFragment,R.id.loginFragment),
+            fallbackOnNavigateUpListener = ::onSupportNavigateUp
+        )
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        NavigationUI.setupWithNavController(
+            toolbar,
+            navController,
+            appBarConfiguration
+        )
 
-        findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(navController, appBarConfiguration)
+//        findViewById<Toolbar>(R.id.toolbar)
+//            .setupWithNavController(navController, appBarConfiguration)
     }
 
 //    override fun onSupportNavigateUp(): Boolean {

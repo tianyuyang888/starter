@@ -49,13 +49,16 @@ class ShoeListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
         binding.shoeListViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+
+
         viewModel.eventAddShoe.observe(viewLifecycleOwner, { hasAddShoe ->
             if (hasAddShoe) {
                 findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
                 viewModel.onAddShoeComplete()
             }
         })
-        setHasOptionsMenu(true)
+
         shareShoeListViewModel.shoeList.observe(viewLifecycleOwner, { list ->
             list.forEach { item ->
                 val view = LayoutInflater.from(context).inflate(R.layout.item_shoe, null)
@@ -76,6 +79,7 @@ class ShoeListFragment : Fragment() {
 
         })
 
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -87,10 +91,11 @@ class ShoeListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(
-            item,
-            findNavController()
-        ) || super.onOptionsItemSelected(item)
+        if (item.itemId == R.id.log_out){
+            userViewModel.logOut()
+            findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

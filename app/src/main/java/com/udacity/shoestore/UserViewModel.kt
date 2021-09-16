@@ -79,4 +79,8 @@ class UserViewModel(state: SavedStateHandle) : ViewModel() {
     fun onNextComplete() {
         _eventNext.value = false
     }
+
+    fun logOut() {
+        savedStateHandle.set(LOGIN_SUCCESSFUL, false)
+    }
 }

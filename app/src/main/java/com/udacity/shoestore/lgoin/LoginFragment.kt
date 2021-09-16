@@ -39,7 +39,6 @@ class LoginFragment : Fragment() {
         userViewModel.eventRegister.observe(viewLifecycleOwner, { hasRegister ->
             if (hasRegister) {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-                findNavController().popBackStack()
                 userViewModel.onRegisterComplete()
             }
         })
