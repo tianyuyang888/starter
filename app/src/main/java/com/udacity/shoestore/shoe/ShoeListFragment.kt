@@ -2,18 +2,16 @@ package com.udacity.shoestore.shoe
 
 import android.os.Bundle
 import android.view.*
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.BaseApplication
 import com.udacity.shoestore.R
 import com.udacity.shoestore.UserViewModel
+import com.udacity.shoestore.databinding.ItemShoeBinding
 import com.udacity.shoestore.databinding.ShoeListFragmentBinding
 import kotlinx.android.synthetic.main.shoe_list_fragment.view.*
 import timber.log.Timber
@@ -61,20 +59,14 @@ class ShoeListFragment : Fragment() {
 
         shareShoeListViewModel.shoeList.observe(viewLifecycleOwner, { list ->
             list.forEach { item ->
-                val view = LayoutInflater.from(context).inflate(R.layout.item_shoe, null)
-                view.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
+                val itemShoeBinding = DataBindingUtil.inflate<ItemShoeBinding>(
+                    layoutInflater,
+                    R.layout.item_shoe,
+                    null,
+                    false
                 )
-                val shoeName = view.findViewById<TextView>(R.id.name_text)
-                val shoeSize = view.findViewById<TextView>(R.id.size_text)
-                val shoeCompany = view.findViewById<TextView>(R.id.company_text)
-                val shoeDescription = view.findViewById<TextView>(R.id.description_text)
-                shoeName.text = item.name
-                shoeSize.text = item.size.toString()
-                shoeCompany.text = item.company
-                shoeDescription.text = item.description
-                binding.root.ll_list.addView(view)
+                itemShoeBinding.shoe = item
+                binding.root.ll_list.addView(itemShoeBinding.root)
             }
 
         })
@@ -91,7 +83,7 @@ class ShoeListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.log_out){
+        if (item.itemId == R.id.log_out) {
             userViewModel.logOut()
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
         }

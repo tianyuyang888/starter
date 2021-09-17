@@ -8,6 +8,7 @@
             type="com.udacity.shoestore.instruction.InstructionViewModel" />
     </data>
 
+<!--    Display 3 layouts vertically,linearlayout is more convenient -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

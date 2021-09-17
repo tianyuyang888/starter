@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
+<!--    4 views are aligned vertically,ConstraintLayout is more convenient-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".lgoin.LoginFragment">
-
 
         <Button
             android:id="@+id/button_register"
